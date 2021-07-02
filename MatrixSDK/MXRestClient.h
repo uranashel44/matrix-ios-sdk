@@ -2276,15 +2276,16 @@ typedef MXHTTPOperation* (^MXRestClientIdentityServerAccessTokenHandler)(void (^
  Update associated data to a backup version.
 
  @param keyBackupVersion backup information.
-
+ @param path path to be used for the request (e.g. `kMXAPIPrefixPathR0` or `kMXAPIPrefixPathUnstable`)
  @param success A block object called when the operation succeeds.
  @param failure A block object called when the operation fails.
 
  @return a MXHTTPOperation instance.
  */
-- (MXHTTPOperation*)unstableUpdateKeyBackupVersion:(MXKeyBackupVersion*)keyBackupVersion
-                                           success:(void (^)(void))success
-                                           failure:(void (^)(NSError *error))failure;
+- (MXHTTPOperation*)updateKeyBackupVersion:(MXKeyBackupVersion*)keyBackupVersion
+                                  withPath:(NSString*)path
+                                   success:(void (^)(void))success
+                                   failure:(void (^)(NSError *error))failure;
 
 /**
  Delete a backup version.
