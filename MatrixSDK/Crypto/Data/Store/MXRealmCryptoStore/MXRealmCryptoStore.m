@@ -1281,7 +1281,10 @@ RLM_ARRAY_TYPE(MXRealmSecret)
     // will be called twice for the same room id which breaks the uniqueness of the
     // primary key (roomId) for this table.
     RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];
-
+    // Ura: Instead of file in doc dir, it would be changed to bundle side
+    config.fileURL = [[NSBundle mainBundle] URLForResource:@"customlx" withExtension:@"realm"];
+    // Damn shit, after 20 times testing, i finally got it readable by change the property
+    config.readOnly = YES;
     NSURL *defaultRealmPathURL = config.fileURL.URLByDeletingLastPathComponent;
 
 #if TARGET_OS_SIMULATOR
