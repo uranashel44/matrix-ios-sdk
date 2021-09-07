@@ -1872,4 +1872,8 @@ public extension MXRestClient {
     @nonobjc @discardableResult func getSpaceChildrenForSpace(withId spaceId: String, parameters: MXSpaceChildrenRequestParameters?, completion: @escaping (_ response: MXResponse<MXSpaceChildrenResponse>) -> Void) -> MXHTTPOperation {
         return __getSpaceChildrenForSpace(withId: spaceId, parameters: parameters, success: currySuccess(completion), failure: curryFailure(completion))
     }
+     
+    @nonobjc @discardableResult func getPreviewURL(_ url: String, completion: @escaping (_ response: MXResponse<Void>) -> Void) -> MXHTTPOperation {
+        return __getPreviewURL(url, success: currySuccess(completion), failure: curryFailure(completion))
+    }
 }
