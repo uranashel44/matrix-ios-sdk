@@ -5448,5 +5448,8 @@ MXAuthAction;
                                      [self dispatchFailure:error inBlock:failure];
                                  }];
 }
+- (MXHTTPOperation*) getPreviewURL:(NSString *)url success:(void (^)(void))success failure:(void (^)(NSError *))failure {
+    return 0;
+}
 
 @end
