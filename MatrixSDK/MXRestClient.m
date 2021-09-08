@@ -5459,22 +5459,18 @@ MXAuthAction;
                                  success:^(NSDictionary *JSONResponse) {
         MXStrongifyAndReturnIfNil(self);
 
+        
         if (success)
         {
-            NSLog(@"words :: %@", JSONResponse);
-            NSLog(@"words2 :: %@", JSONResponse[@"og:url"]);
-            
-            MXPreview *mxPreviewWebsite = [MXPreview new];
-            mxPreviewWebsite.url = JSONResponse[@"og:url"];
-//            [self dispatchProcessing:^{
-//                mxPreviewWebsite.url = JSONResponse[@"og:url"];
-//            } andCompletion:^{
-                NSLog(@"words1 :: %@", mxPreviewWebsite.url);
-                success(mxPreviewWebsite);
-//            }];
+            __block NSDictionary *mxPreview;
+            [self dispatchProcessing:^{
+                MXJSONModelSetMXJSONModel(mxPreview, MXPreview, JSONResponse);
+            } andCompletion:^{
+                success(mxPreview);
+            }];
         }
-    } failure:^(NSError *error) {
-        NSLog(@"err :: %@", error.description);
+    }
+    failure:^(NSError *error) {
         MXStrongifyAndReturnIfNil(self);
         [self dispatchFailure:error inBlock:failure];
     }];
