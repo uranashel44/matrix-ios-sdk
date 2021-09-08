@@ -2104,8 +2104,7 @@ NSString *const kMXPushRuleScopeStringDevice = @"device";
     MXPreview *mxPreview = [[MXPreview alloc] init];
     if (mxPreview)
     {
-         MXJSONModelSetDictionary(mxPreviewData, JSONDictionary[@"device_data"] ?? "");
-         MXJSONModelSetString(mxPreview.description, JSONDictionary[@"og:description"] ?? "");
+        MXJSONModelSetString(mxPreview.description, JSONDictionary[@"og:description"] ?? "");
         MXJSONModelSetString(mxPreview.url, JSONDictionary[@"og:url"] ?? "");
         MXJSONModelSetString(mxPreview.siteName, JSONDictionary[@"og:site_name"] ?? "");
         MXJSONModelSetString(mxPreview.title, JSONDictionary[@"og:title"] ?? "");
