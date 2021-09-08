@@ -5448,8 +5448,22 @@ MXAuthAction;
                                      [self dispatchFailure:error inBlock:failure];
                                  }];
 }
+
 - (MXHTTPOperation*) getPreviewURL:(NSString *)url success:(void (^)(void))success failure:(void (^)(NSError *))failure {
-    return 0;
+    NSString *path = [NSString stringWithFormat:@"%@/preview_url?url=%@",
+                             kMXContentPrefixPath, url];
+    MXWeakify(self);
+    return [httpClient requestWithMethod:@"GET"
+                                    path:path
+                              parameters:@{}
+                                 success:^(NSDictionary *JSONResponse) {
+                                     MXStrongifyAndReturnIfNil(self);
+                                     [self dispatchSuccess:success];
+                                 }
+                                 failure:^(NSError *error) {
+                                     MXStrongifyAndReturnIfNil(self);
+                                     [self dispatchFailure:error inBlock:failure];
+                                 }];
 }
 
 @end
