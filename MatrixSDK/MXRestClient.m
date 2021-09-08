@@ -5462,16 +5462,18 @@ MXAuthAction;
         if (success)
         {
             NSLog(@"words :: %@", JSONResponse);
-             
+            NSLog(@"words2 :: %@", JSONResponse[@"og:url"]);
+            
             MXPreview *mxPreviewWebsite = [MXPreview new];
             [self dispatchProcessing:^{
                 mxPreviewWebsite.url = JSONResponse[@"og:url"];
             } andCompletion:^{
+                NSLog(@"words1 :: %@",mxPreviewWebsite);
                 success(mxPreviewWebsite);
             }];
         }
     } failure:^(NSError *error) {
-        
+        NSLog(@"err :: %@", error.description);
         MXStrongifyAndReturnIfNil(self);
         [self dispatchFailure:error inBlock:failure];
     }];
