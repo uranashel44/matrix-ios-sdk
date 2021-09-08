@@ -2756,7 +2756,7 @@ Get the maximum size a media upload can be in bytes.
                                           success:(void (^)(MXSpaceChildrenResponse *spaceChildrenResponse))success
                                           failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 - (MXHTTPOperation*)getPreviewURL:(NSString*)url
-                          success:(void (^)(void))success
+                          success:(void (^)(MXPreview *))success
                           failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 
 @end
