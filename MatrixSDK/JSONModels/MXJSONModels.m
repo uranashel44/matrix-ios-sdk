@@ -2104,17 +2104,16 @@ NSString *const kMXPushRuleScopeStringDevice = @"device";
     MXPreview *mxPreview = [[MXPreview alloc] init];
     if (mxPreview)
     {
-//         NSDictionary *mxPreviewData = nil;
-//         MXJSONModelSetDictionary(mxPreviewData, JSONDictionary[@"device_data"]);
-//         MXJSONModelSetString(mxPreview.description, JSONDictionary[@"og:description"]);
-        MXJSONModelSetString(mxPreview.url, JSONDictionary[@"og:url"]);
-//         MXJSONModelSetString(mxPreview.siteName, JSONDictionary[@"og:site_name"]);
-//         MXJSONModelSetString(mxPreview.title, JSONDictionary[@"og:title"]);
-//         MXJSONModelSetString(mxPreview.type, JSONDictionary[@"og:type"]);
-//         MXJSONModelSetString(mxPreview.imageWidth, JSONDictionary[@"og:image:width"]);
-//         MXJSONModelSetString(mxPreview.imageHeight, JSONDictionary[@"og:image:height"]);
-//         MXJSONModelSetString(mxPreview.image, JSONDictionary[@"og:image"]);
-//         MXJSONModelSetString(mxPreview.type, JSONDictionary[@"og:type"]);
+         MXJSONModelSetDictionary(mxPreviewData, JSONDictionary[@"device_data"] ?? "");
+         MXJSONModelSetString(mxPreview.description, JSONDictionary[@"og:description"] ?? "");
+        MXJSONModelSetString(mxPreview.url, JSONDictionary[@"og:url"] ?? "");
+        MXJSONModelSetString(mxPreview.siteName, JSONDictionary[@"og:site_name"] ?? "");
+        MXJSONModelSetString(mxPreview.title, JSONDictionary[@"og:title"] ?? "");
+        MXJSONModelSetString(mxPreview.type, JSONDictionary[@"og:type"] ?? "");
+        MXJSONModelSetString(mxPreview.imageWidth, JSONDictionary[@"og:image:width"] ?? "");
+        MXJSONModelSetString(mxPreview.imageHeight, JSONDictionary[@"og:image:height"] ?? "");
+        MXJSONModelSetString(mxPreview.image, JSONDictionary[@"og:image"] ?? "");
+        MXJSONModelSetString(mxPreview.type, JSONDictionary[@"og:type"] ?? "");
     }
     
     return mxPreview;
