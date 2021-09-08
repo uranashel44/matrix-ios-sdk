@@ -1409,7 +1409,7 @@ FOUNDATION_EXPORT NSString *const kMXPushRuleScopeStringDevice;
     /**
      If website explain their desc, we can prag it then
      */
-    @property (nonatomic) NSString *description;
+    @property (nonatomic) NSString *desc;
     /**
      Image height
      */
