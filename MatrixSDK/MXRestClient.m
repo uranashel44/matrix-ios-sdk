@@ -5453,8 +5453,8 @@ MXAuthAction;
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
     // NSTimeInterval is defined as double
     NSNumber *timeStampObj = [NSNumber numberWithDouble: timeStamp];
-    NSString *path = [NSString stringWithFormat:@"%@/preview_url?url=%@&ts=%@",
-                             kMXContentPrefixPath, url, timeStampObj];
+    NSString *path = [NSString stringWithFormat:@"%@/preview_url?url=%@&ts=1000",
+                             kMXContentPrefixPath, url];
     MXWeakify(self);
     return [httpClient requestWithMethod:@"GET"
                                     path:path
