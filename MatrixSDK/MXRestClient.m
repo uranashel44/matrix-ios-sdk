@@ -5449,10 +5449,7 @@ MXAuthAction;
                                  }];
 }
 
-- (MXHTTPOperation*) getPreviewURL:(NSString *)url success:(void (^)(void))success failure:(void (^)(NSError *))failure {
-    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    // NSTimeInterval is defined as double
-    NSNumber *timeStampObj = [NSNumber numberWithDouble: timeStamp];
+- (MXHTTPOperation*) getPreviewURL:(NSString *)url success:(void (^)(MXPreview*))success failure:(void (^)(NSError *))failure {
     NSString *path = [NSString stringWithFormat:@"%@/preview_url?url=%@&ts=1000",
                              kMXContentPrefixPath, url];
     MXWeakify(self);
@@ -5460,13 +5457,23 @@ MXAuthAction;
                                     path:path
                               parameters:@{}
                                  success:^(NSDictionary *JSONResponse) {
-                                     MXStrongifyAndReturnIfNil(self);
-                                     [self dispatchSuccess:success];
-                                 }
-                                 failure:^(NSError *error) {
-                                     MXStrongifyAndReturnIfNil(self);
-                                     [self dispatchFailure:error inBlock:failure];
-                                 }];
+        MXStrongifyAndReturnIfNil(self);
+
+        if (success)
+        {
+            NSLog(@"words :: %@", JSONResponse);
+            __block MXPreview *mxPreviewWebsite;
+            [self dispatchProcessing:^{
+                MXJSONModelSetMXJSONModel(mxPreviewWebsite, MXPreview, JSONResponse);
+            } andCompletion:^{
+                success(mxPreviewWebsite);
+            }];
+        }
+    } failure:^(NSError *error) {
+        MXStrongifyAndReturnIfNil(self);
+        [self dispatchFailure:error inBlock:failure];
+    }];
 }
+
 
 @end
