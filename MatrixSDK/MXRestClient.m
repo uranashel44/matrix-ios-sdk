@@ -5450,8 +5450,11 @@ MXAuthAction;
 }
 
 - (MXHTTPOperation*) getPreviewURL:(NSString *)url success:(void (^)(void))success failure:(void (^)(NSError *))failure {
-    NSString *path = [NSString stringWithFormat:@"%@/preview_url?url=%@",
-                             kMXContentPrefixPath, url];
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    // NSTimeInterval is defined as double
+    NSNumber *timeStampObj = [NSNumber numberWithDouble: timeStamp];
+    NSString *path = [NSString stringWithFormat:@"%@/preview_url?url=%@&ts=%@",
+                             kMXContentPrefixPath, url, timeStampObj];
     MXWeakify(self);
     return [httpClient requestWithMethod:@"GET"
                                     path:path
