@@ -1419,6 +1419,10 @@ FOUNDATION_EXPORT NSString *const kMXPushRuleScopeStringDevice;
     */
     @property (nonatomic) NSNumber *imageWidth;
     /**
+     Image width
+    */
+    @property (nonatomic) NSString *image;
+    /**
      type
     */
     @property (nonatomic) NSString *type;
