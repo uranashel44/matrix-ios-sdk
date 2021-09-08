@@ -2109,8 +2109,8 @@ NSString *const kMXPushRuleScopeStringDevice = @"device";
         MXJSONModelSetString(mxPreview.siteName, JSONDictionary[@"og:site_name"]);
         MXJSONModelSetString(mxPreview.title, JSONDictionary[@"og:title"]);
         MXJSONModelSetString(mxPreview.type, JSONDictionary[@"og:type"]);
-        MXJSONModelSetString(mxPreview.imageWidth, JSONDictionary[@"og:image:width"]);
-        MXJSONModelSetString(mxPreview.imageHeight, JSONDictionary[@"og:image:height"]);
+        MXJSONModelSetNumber(mxPreview.imageWidth, JSONDictionary[@"og:image:width"]);
+        MXJSONModelSetNumber(mxPreview.imageHeight, JSONDictionary[@"og:image:height"]);
         MXJSONModelSetString(mxPreview.image, JSONDictionary[@"og:image"]);
         MXJSONModelSetString(mxPreview.type, JSONDictionary[@"og:type"]);
     }
